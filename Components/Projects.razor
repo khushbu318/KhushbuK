@@ -1,0 +1,42 @@
+@using PortfolioSite.Models
+@inject IJSRuntime JS
+
+<section id="projects" class="projects-section">
+    <div class="projects-container">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="projects-grid">
+            @foreach (var project in UserData.Projects)
+            {
+                <div class="project-card">
+                    <h3>@project.Title</h3>
+
+                    <p>@project.Description</p>
+
+                    <div class="tech-stack">
+                        @foreach (var tech in project.Technologies)
+                        {
+                            <span class="tech-badge">@tech</span>
+                        }
+                    </div>
+
+                    <!-- <a href="@project.GithubLink"
+                       target="_blank"
+                       class="project-btn">
+                        View Code →
+                    </a> -->
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("observeProjects");
+        }
+    }
+}

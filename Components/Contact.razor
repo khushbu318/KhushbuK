@@ -1,0 +1,48 @@
+@using PortfolioSite.Models
+@inject IJSRuntime JS
+
+<section id="contact" class="contact-section">
+
+    <div class="contact-container">
+
+        <div class="contact-content">
+            <h2 class="section-title">@UserData.Contact.Title</h2>
+
+            <p class="contact-description">
+                @UserData.Contact.Description
+            </p>
+
+            <p class="contact-cta">
+                @UserData.Contact.CallToAction
+            </p>
+        </div>
+
+        <div class="contact-divider"></div>
+
+        <div class="contact-social">
+            <div class="social-links">
+                @foreach (var link in UserData.SocialLinks)
+                {
+                    <a href="@link.Url"
+                       target="_blank"
+                       class="social-icon"
+                       title="@link.Platform">
+                        <i class="@link.IconClass"></i>
+                    </a>
+                }
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("observeContact");
+        }
+    }
+}

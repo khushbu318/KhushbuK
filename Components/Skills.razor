@@ -1,0 +1,26 @@
+@using PortfolioSite.Models
+@inject IJSRuntime JS
+
+<section id="skills" class="skills-section">
+    <div class="skills-container">
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skills-grid">
+            @foreach (var category in UserData.Skills)
+            {
+                <div class="skill-card">
+                    <h3>@category.Title</h3>
+
+                    <div class="skill-list">
+                        @foreach (var skill in category.Skills)
+                        {
+                            <span class="skill-badge">@skill</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+

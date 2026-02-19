@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <!-- <base href="/" /> -->
+    <base href="/KhushbuK/" />
+
+    <link rel="preload" id="webassembly" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link href="css/theme.css" rel="stylesheet" />
+
+    <!-- Dynamic Emoji Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>✨</text></svg>" />
+    <link href="PortfolioSite.styles.css" rel="stylesheet" />
+    <script type="importmap"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- Progress Bar Loader -->
+        <div class="loader-container">
+            <div class="loader-content">
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="loader-text">Loading Portfolio...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cursor Glow -->
+    <div id="cursorGlow" class="cursor-glow"></div>
+
+    <!-- <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="." class="reload">Reload</a>
+        <span class="dismiss">🗙</span>
+    </div> -->
+    <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
+    <script src="scrollAnimations.js"></script>
+
+    <script>
+        // Animate progress bar during loading
+        let progress = 0;
+        const progressBar = document.querySelector('.progress-bar');
+        const progressInterval = setInterval(() => {
+            progress += Math.random() * 30;
+            progress = Math.min(progress, 90);
+            if (progressBar) {
+                progressBar.style.width = progress + '%';
+            }
+        }, 200);
+
+        // Complete progress when Blazor is ready
+        window.addEventListener('load', () => {
+            clearInterval(progressInterval);
+            if (progressBar) {
+                progressBar.style.width = '100%';
+            }
+        });
+
+        
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const glow = document.getElementById("cursorGlow");
+            const content = document.querySelector(".main-area");
+
+            if (!glow || !content) return;
+
+            content.addEventListener("mousemove", (e) => {
+                glow.style.left = e.clientX + "px";
+                glow.style.top = e.clientY + "px";
+            });
+
+            content.addEventListener("mouseleave", () => {
+                glow.style.left = "-500px";
+            });
+
+        });
+    </script>
+
+
+
+</body>
+
+</html>

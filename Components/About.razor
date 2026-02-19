@@ -1,0 +1,53 @@
+@using PortfolioSite.Models
+
+<section class="about-section">
+    <div class="about-container">
+
+        <h2 class="section-title">About Me</h2>
+
+        <table class="education-table">
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Institution</th>
+                    <th>University</th>
+                    <th>Year of Completion</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var education in UserData.EducationDetails)
+                {
+                    <tr>
+                        <td>@education.Course</td>
+                        
+                        <td>@education.Institution</td>
+                        <td>@education.University</td>
+                        <td>@education.YearOfCompletion</td>
+                        <td>@education.Score</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="about-highlights">
+
+            <div class="highlight-card">
+                <h3>Experience</h3>
+                <p>@UserData.Info.YearsOfExperience Years</p>
+            </div>
+
+            <div class="highlight-card">
+                <h3>Projects</h3>
+                <p>@UserData.Info.ProjectsCompleted</p>
+            </div>
+
+            <!-- <div class="highlight-card">
+                <h3>Core Focus</h3>
+                <p>AI / ML / Gen AI Systems</p>
+            </div> -->
+
+        </div>
+
+    </div>
+</section>

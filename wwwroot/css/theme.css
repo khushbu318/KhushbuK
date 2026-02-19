@@ -1,0 +1,135 @@
+/* =========================================
+   GLOBAL DESIGN SYSTEM — CORPORATE BLUE
+   ========================================= */
+
+/* =========================================
+   DARK MODE (DEFAULT)
+   ========================================= */
+
+:root {
+
+    /* =============================
+       BASE COLORS (DARK MODE DEFAULT)
+       ============================= */
+
+    --bg-app: #0f172a;            /* main page background */
+    --bg-surface: #1e293b;        /* cards / section inner surface */
+    --bg-elevated: #111827;       /* sidebar */
+
+    --text-heading: #f1f5f9;      /* strong headings */
+    --text-body: #cbd5e1;         /* paragraph text */
+    --text-muted: #94a3b8;        /* secondary text */
+
+    --accent-primary: #3b82f6;    /* corporate blue */
+    --accent-hover: #2563eb;      /* darker blue */
+
+    /* =============================
+       BORDER SYSTEM
+       ============================= */
+
+    --border-primary: rgba(59,130,246,0.3);      /* primary border with accent */
+    --border-secondary: rgba(255,255,255,0.08);  /* subtle border */
+    --border-focus: rgba(59,130,246,0.6);        /* focused state border */
+    --border-error: rgba(239,68,68,0.4);         /* error state border */
+    --border-success: rgba(34,197,94,0.4);       /* success state border */
+    --border-subtle: rgba(255,255,255,0.08);     /* most subtle border */
+    --divider: rgba(255,255,255,0.05);           /* divider line */
+
+    /* =============================
+       SHADOW SYSTEM
+       ============================= */
+
+    --shadow-sm: 0 2px 6px rgba(0,0,0,0.2);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.3);
+    --shadow-lg: 0 20px 40px rgba(0,0,0,0.35);
+
+    /* =============================
+       RADIUS
+       ============================= */
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+
+    /* =============================
+       TRANSITIONS
+       ============================= */
+
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.4s cubic-bezier(.4,0,.2,1);
+
+    /* ===== NEON GLOW EFFECTS ===== */
+    --accent-glow: #60a5fa;
+    --neon-shadow: 0 0 15px rgba(59,130,246,0.6);
+    --neon-text: 0 0 10px rgba(96,165,250,0.8);
+
+}
+
+/* =========================================
+   LIGHT MODE (FUTURE IMPLEMENTATION)
+   ========================================= */
+
+/* Uncomment when light mode is ready */
+/*
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-app: #f8fafc;
+        --bg-surface: #ffffff;
+        --bg-elevated: #f1f5f9;
+
+        --text-heading: #0f172a;
+        --text-body: #1e293b;
+        --text-muted: #64748b;
+
+        --accent-primary: #2563eb;
+        --accent-hover: #1d4ed8;
+
+        --border-primary: rgba(37,99,235,0.3);
+        --border-secondary: rgba(0,0,0,0.08);
+        --border-focus: rgba(37,99,235,0.6);
+        --border-error: rgba(239,68,68,0.4);
+        --border-success: rgba(34,197,94,0.4);
+        --border-subtle: rgba(0,0,0,0.08);
+        --divider: rgba(0,0,0,0.05);
+
+        --shadow-sm: 0 2px 6px rgba(0,0,0,0.1);
+        --shadow-md: 0 8px 24px rgba(0,0,0,0.15);
+        --shadow-lg: 0 20px 40px rgba(0,0,0,0.2);
+
+        --accent-glow: #60a5fa;
+        --neon-shadow: 0 0 15px rgba(37,99,235,0.4);
+        --neon-text: 0 0 10px rgba(96,165,250,0.6);
+    }
+}
+
+/* Alternative: Class-based dark/light mode toggle */
+/*
+body.light-mode {
+    --bg-app: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-elevated: #f1f5f9;
+
+    --text-heading: #0f172a;
+    --text-body: #1e293b;
+    --text-muted: #64748b;
+
+    --accent-primary: #2563eb;
+    --accent-hover: #1d4ed8;
+
+    --border-primary: rgba(37,99,235,0.3);
+    --border-secondary: rgba(0,0,0,0.08);
+    --border-focus: rgba(37,99,235,0.6);
+    --border-error: rgba(239,68,68,0.4);
+    --border-success: rgba(34,197,94,0.4);
+    --border-subtle: rgba(0,0,0,0.08);
+    --divider: rgba(0,0,0,0.05);
+
+    --shadow-sm: 0 2px 6px rgba(0,0,0,0.1);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.15);
+    --shadow-lg: 0 20px 40px rgba(0,0,0,0.2);
+
+    --accent-glow: #60a5fa;
+    --neon-shadow: 0 0 15px rgba(37,99,235,0.4);
+    --neon-text: 0 0 10px rgba(96,165,250,0.6);
+}
+*/

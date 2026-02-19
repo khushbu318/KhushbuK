@@ -1,0 +1,269 @@
+.hero-section {
+    display: flex;
+    align-items: stretch;
+    min-height: 100%;
+}
+
+.hero-container {
+    max-width: 1100px;
+    margin: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 40px;
+    align-items: start;
+    padding: 0;
+}
+
+.hero-header {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.hero-header h1 {
+    font-size: 2.8rem;
+    margin: 0;
+    color: var(--text-heading);
+    text-align: center;
+    width: 100%;
+}
+
+.hero-content {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.hero-image {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.hero-image img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-primary);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+}
+
+.roles {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.role-badge {
+    background-color: var(--bg-surface);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid var(--border-primary);
+    color: var(--text-body);
+    transition: var(--transition-fast);
+}
+
+.role-badge:hover {
+    border-color: var(--accent-primary);
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+.bio {
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: var(--text-body);
+    font-size: 1.05rem;
+}
+
+.resume-btn {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-glow));
+    padding: 12px 24px;
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-smooth);
+    box-shadow: var(--neon-shadow);
+    display: inline-block;
+    width: fit-content;
+}
+
+.resume-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+}
+
+.social-links {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-secondary);
+}
+
+.social-links a {
+    color: var(--text-body);
+    font-size: 2rem;
+    transition: all var(--transition-smooth);
+}
+
+.social-links a:hover {
+    color: var(--accent-primary);
+    transform: translateY(-3px);
+    text-shadow: var(--neon-text);
+}
+
+/* ===== HERO ANIMATIONS ===== */
+
+.hero-header {
+    animation: slideRight 0.8s ease forwards;
+}
+
+.hero-header h1 {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.hero-image {
+    animation: fadeScale 1s ease forwards;
+}
+
+.hero-content {
+    animation: slideLeft 0.9s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.role-badge {
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.role-badge:nth-child(1) { animation-delay: 0.6s; }
+.role-badge:nth-child(2) { animation-delay: 0.8s; }
+.role-badge:nth-child(3) { animation-delay: 1s; }
+
+.social-links {
+    animation: slideUp 0.8s ease forwards;
+    animation-delay: 1.2s;
+}
+
+@keyframes fadeScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(-40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 640px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .hero-header {
+        grid-column: 1;
+        grid-row: 1;
+        animation: slideDown 0.8s ease forwards;
+    }
+
+    .hero-header h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .hero-image {
+        grid-column: 1;
+        grid-row: 2;
+        justify-content: center;
+    }
+
+    .hero-image img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .hero-content {
+        grid-column: 1;
+        grid-row: 3;
+        animation: fadeIn 0.8s ease 0.3s forwards;
+    }
+
+    .social-links {
+        grid-column: 1;
+        grid-row: 4;
+        justify-content: center;
+        border-top: 1px solid var(--border-secondary);
+        border-bottom: none;
+        padding-top: 20px;
+    }
+
+    .resume-btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+    }
+}
+
+@media (min-width: 641px) {
+    .hero-container {
+        padding: 40px;
+    }
+}
