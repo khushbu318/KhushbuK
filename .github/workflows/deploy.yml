@@ -24,8 +24,27 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o release
 
-      - name: Copy index.html to 404.html
-        run: cp release/wwwroot/index.html release/wwwroot/404.html
+      - name: Create 404.html with redirect for SPA routing
+        run: |
+          cat > release/wwwroot/404.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <meta charset="utf-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Redirecting...</title>
+              <script>
+                  var path = window.location.pathname
+                      .split('/')
+                      .slice(1)
+                      .join('/');
+                  window.location.replace('/KhushbuK/?' + path + (window.location.search ? '&' + window.location.search.slice(1) : '') + (window.location.hash || ''));
+              </script>
+          </head>
+          <body>
+          </body>
+          </html>
+          EOF
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

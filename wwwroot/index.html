@@ -46,6 +46,16 @@
     <script src="scrollAnimations.js"></script>
 
     <script>
+        // Handle 404 redirect restoration for SPA routing on GitHub Pages
+        if (window.location.search) {
+            var path = window.location.search.substring(1).split('&')[0];
+            if (path && !path.startsWith('utm') && path !== '') {
+                window.history.replaceState(null, null, '/KhushbuK/' + path);
+            }
+        }
+    </script>
+
+    <script>
         // Animate progress bar during loading
         let progress = 0;
         const progressBar = document.querySelector('.progress-bar');
