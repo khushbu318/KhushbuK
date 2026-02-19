@@ -1,0 +1,4 @@
+E:\net_website\PortfolioSite\release\wwwroot\index.html
+E:\net_website\PortfolioSite\release\PortfolioSite.runtimeconfig.json
+E:\net_website\PortfolioSite\release\dotnet.js
+E:\net_website\PortfolioSite\release\web.config

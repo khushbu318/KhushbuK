@@ -206,9 +206,6 @@ E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\dotnet.runti
 E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\icudt_CJK.tjcz0u77k5.dat
 E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\icudt_EFIGS.tptq2av103.dat
 E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\icudt_no_CJK.lfu7j35m59.dat
-E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\PortfolioSite.on9ztg8oxo.wasm
-E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\PortfolioSite.2m57gsja83.pdb
-E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\dotnet.v762mut7hp.js
 E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\blazor.webassembly.66stpp682q.js.gz
 E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\Microsoft.AspNetCore.Authorization.3ur142rhlk.wasm.gz
 E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\Microsoft.AspNetCore.Components.ld1j2d23tn.wasm.gz
@@ -416,9 +413,6 @@ E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\dotnet.runti
 E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\icudt_CJK.tjcz0u77k5.dat.gz
 E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\icudt_EFIGS.tptq2av103.dat.gz
 E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\icudt_no_CJK.lfu7j35m59.dat.gz
-E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\PortfolioSite.on9ztg8oxo.wasm.gz
-E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\PortfolioSite.2m57gsja83.pdb.gz
-E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\dotnet.v762mut7hp.js.gz
 E:\net_website\PortfolioSite\bin\Release\net10.0\PortfolioSite.staticwebassets.runtime.json
 E:\net_website\PortfolioSite\bin\Release\net10.0\PortfolioSite.staticwebassets.endpoints.json
 E:\net_website\PortfolioSite\bin\Release\net10.0\PortfolioSite.dll
@@ -866,7 +860,6 @@ E:\net_website\PortfolioSite\obj\Release\net10.0\PortfolioSite.dll
 E:\net_website\PortfolioSite\obj\Release\net10.0\refint\PortfolioSite.dll
 E:\net_website\PortfolioSite\obj\Release\net10.0\PortfolioSite.pdb
 E:\net_website\PortfolioSite\obj\Release\net10.0\ref\PortfolioSite.dll
-E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\mxoiav6oc7-{0}-45ayzoe2jh-45ayzoe2jh.gz
 E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\w0rfyt9lel-{0}-a3dr28q3g1-a3dr28q3g1.gz
 E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\noif7r2d85-{0}-3xufvjtm6s-3xufvjtm6s.gz
 E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\xyvve2jpgy-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -1124,7 +1117,13 @@ E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\26o0ic6txt-{0}-5kqpr
 E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\g24gllq8xl-{0}-tjcz0u77k5-tjcz0u77k5.gz
 E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\1xyugv4ajb-{0}-tptq2av103-tptq2av103.gz
 E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\20026094v4-{0}-lfu7j35m59-lfu7j35m59.gz
-E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\hdowm3ozfd-{0}-on9ztg8oxo-on9ztg8oxo.gz
-E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\jgicf9cldm-{0}-2m57gsja83-2m57gsja83.gz
-E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\r10437reh7-{0}-v762mut7hp-v762mut7hp.gz
-E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\wgqoca0w2a-{0}-beixaewvlx-beixaewvlx.gz
+E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\PortfolioSite.2h69lgohhi.wasm
+E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\PortfolioSite.47w8hlsy6z.pdb
+E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\dotnet.nkwlrkfluk.js
+E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\PortfolioSite.2h69lgohhi.wasm.gz
+E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\PortfolioSite.47w8hlsy6z.pdb.gz
+E:\net_website\PortfolioSite\bin\Release\net10.0\wwwroot\_framework\dotnet.nkwlrkfluk.js.gz
+E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\hdowm3ozfd-{0}-2h69lgohhi-2h69lgohhi.gz
+E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\jgicf9cldm-{0}-47w8hlsy6z-47w8hlsy6z.gz
+E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\r10437reh7-{0}-nkwlrkfluk-nkwlrkfluk.gz
+E:\net_website\PortfolioSite\obj\Release\net10.0\compressed\wgqoca0w2a-{0}-jceg9qbbk8-jceg9qbbk8.gz
