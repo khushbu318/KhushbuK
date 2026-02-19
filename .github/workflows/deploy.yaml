@@ -27,28 +27,32 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o release
 
-      - name: Create .nojekyll to prevent GitHub Jekyll processing
+      - name: Create .nojekyll
         run: touch release/wwwroot/.nojekyll
 
-      - name: Create 404.html with redirect for SPA routing
+      - name: Create 404.html
         run: |
           cat > release/wwwroot/404.html << 'EOF'
           <!DOCTYPE html>
           <html>
-          <head>
-              <meta charset="utf-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-              <title>Redirecting...</title>
+            <head>
+              <meta charset="utf-8">
+              <title>Redirect</title>
               <script>
-                  var path = window.location.pathname
-                      .split('/')
-                      .slice(1)
-                      .join('/');
-                  window.location.replace('/KhushbuK/?' + path + (window.location.search ? '&' + window.location.search.slice(1) : '') + (window.location.hash || ''));
+                const path = window.location.pathname;
+                const search = window.location.search;
+                const hash = window.location.hash;
+                
+                // Extract the path after /KhushbuK/
+                const pathSegments = path.split('/').filter(x => x && x !== 'KhushbuK');
+                const newPath = pathSegments.length > 0 ? pathSegments.join('/') : '';
+                
+                // Redirect to index.html with the original path and query
+                window.location.replace('/KhushbuK/?' + newPath + (search ? '&' + search.slice(1) : '') + hash);
               </script>
-          </head>
-          <body>
-          </body>
+            </head>
+            <body>
+            </body>
           </html>
           EOF
 
