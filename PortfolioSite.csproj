@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
+    <StaticWebAssetBasePath>KhushbuK</StaticWebAssetBasePath>
+
   </PropertyGroup>
 
   <!-- <PropertyGroup>
