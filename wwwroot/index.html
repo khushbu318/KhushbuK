@@ -46,6 +46,20 @@
     <script src="scrollAnimations.js"></script>
 
     <script>
+        // Handle 404 redirect restoration for client-side routing
+        if (window.location.search) {
+            var query = window.location.search.substring(1);
+            var search = query.split('&');
+            var path = search[0];
+            
+            if (path && !path.startsWith('utm') && path !== '') {
+                // Restore the original path that caused the 404
+                window.history.replaceState(null, null, '/KhushbuK/' + path);
+            }
+        }
+    </script>
+
+    <script>
         // Animate progress bar during loading
         let progress = 0;
         const progressBar = document.querySelector('.progress-bar');
