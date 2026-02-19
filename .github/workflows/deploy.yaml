@@ -21,8 +21,14 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
+      - name: Update base href for GitHub Pages
+        run: sed -i 's|<base href="/" />|<base href="/KhushbuK/" />|g' wwwroot/index.html
+
       - name: Publish
         run: dotnet publish -c Release -o release
+
+      - name: Create .nojekyll to prevent GitHub Jekyll processing
+        run: touch release/wwwroot/.nojekyll
 
       - name: Create 404.html with redirect for SPA routing
         run: |
