@@ -10,7 +10,7 @@ namespace PortfolioSite.Models
         public string About { get; set; } = default!;
         public string ProfileImage { get; set; } = default!;
         public string ResumeLink { get; set; } = default!;
-        public double YearsOfExperience { get; set; }
+        public int YearsOfExperience { get; set; }
         public int ProjectsCompleted { get; set; }
         public List<EducationInfo> EducationDetails { get; set; } = new();
     }
@@ -67,233 +67,160 @@ namespace PortfolioSite.Models
         {
             new SocialLink
             {
-                Platform = "GitHub",
-                Url = "https://github.com/khushbu318",
-                IconClass = "fab fa-github"
-            },
-            new SocialLink
-            {
-                Platform = "LinkedIn",
-                Url = "https://www.linkedin.com/in/khushbu-kushvaha/",
-                IconClass = "fab fa-linkedin"
-            },
-            new SocialLink
-            {
                 Platform = "Email",
-                Url = "mailto:yourmail@gmail.com",
+                Url = "mailto:gadpalluamit1998@gmail.com",
                 IconClass = "fas fa-envelope"
             },
             new SocialLink
             {
                 Platform = "Phone",
-                Url = "tel:+919076015405",
+                Url = "tel:+918411812941",
                 IconClass = "fas fa-phone"
+            },
+            new SocialLink
+            {
+                Platform = "LinkedIn",
+                Url = "https://www.linkedin.com/in/amit-gadpallu-008396168",
+                IconClass = "fab fa-linkedin"
             }
-
         };
 
         public static UserInfo Info = new UserInfo
         {
-            Name = "Khushbu Kushvaha",
+            Name = "Amit Gadpallu",
             Roles = new List<string>
             {
-                "AI/ML Developer",
-                "Generative AI Engineer",
-                "Python Developer"
+                "Team Leader",
+                "Professional Steel Detailer",
+                "Tekla Structures Expert"
             },
-            Bio = "Curious and adaptable AI/ML Developer with hands-on experience in building Gen AI prototypes, predictive models, and intelligent data tools using Python, React.js and LLM frameworks.",
-            ProfileImage = "images/profile_k.png",
-            ResumeLink = "files/Khushbu_Kushvaha.pdf",
-            YearsOfExperience = 3.6,
-            ProjectsCompleted = 5,
-            About = "AI/ML professional experienced in Machine Learning, Time Series Forecasting, Generative AI, RAG pipelines and Agentic AI systems. Comfortable working across backend and frontend stacks, building automation tools, dashboards and intelligent applications that solve real-world business problems."
+            Bio = "Responsible Tekla Detailer with 5 years of experience in the steel detailing industry. Passionate about delivering outstanding quality, precise structural drawings, and leading teams to achieve business objectives.",
+            ProfileImage = "images/profile.jpg",
+            ResumeLink = "files/Amit_G_Resume.pdf",
+            YearsOfExperience = 6,
+            ProjectsCompleted = 4,
+            About = "Experienced Tekla Detailer with strong knowledge of structural steel projects including commercial complexes, airports, hospitals and tilt-up projects. Skilled in design drawing analysis, OSHA safety standards, AISC/CISC/AWS compliance, BIM coordination, RFI handling, customized reports, advanced connection macros and team management."
         };
 
         public static List<Project> Projects = new List<Project>
         {
             new Project
             {
-                Title = "Healthcare Agentic AI Prior Authorization Framework",
-                Description = "Contributed to a containerized multi-agent automation framework for healthcare prior authorization. Built FastAPI services, implemented event-driven pipelines using Google Pub/Sub, integrated Vertex AI (LLMs) for intelligent browser automation, and developed HITL & MFA workflows using n8n, PostgreSQL, and Redis.",
-                Technologies = new List<string> { "FastAPI", "Vertex AI", "Google Pub/Sub", "PostgreSQL", "Redis", "n8n", "Docker", "LLMs" },
-                GithubLink = "Enterprise Project – Private Repository"
+                Title = "Microsoft Commercial Complex (Buildings P, Q, N, O)",
+                Description = "Steel detailing and modelling for large commercial complexes ensuring AISC compliance and high precision erection drawings.",
+                Technologies = new List<string> { "Tekla Structures", "BIM", "Navisworks", "IFC" },
+                GithubLink = ""
             },
             new Project
             {
-                Title = "Natural Language to SQL Intelligence Tool",
-                Description = "Developed a system that converts natural language queries into SQL statements and visualizes insights using React and Google Charts, enabling non-technical users to perform data analysis efficiently.",
-                Technologies = new List<string> { "Python", "SQL", "React.js", "Google Charts", "LLM Integration" },
-                GithubLink = "Add GitHub project link here"
+                Title = "Thompson Regional Airport",
+                Description = "Structural steel detailing for airport project including modelling, coordination and quality checks.",
+                Technologies = new List<string> { "Tekla Structures", "Steel Detailing", "CAD" },
+                GithubLink = ""
             },
             new Project
             {
-                Title = "RAG-Based Enterprise Chatbot",
-                Description = "Built a Retrieval-Augmented Generation (RAG) chatbot to assist developers with data migration and internal workflows, leveraging vector databases and LLM orchestration.",
-                Technologies = new List<string> { "LangChain", "Semantic Kernel", "FAISS", "React.js", "Flask", "RAG" },
-                GithubLink = "Add GitHub project link here"
+                Title = "Snoqualmie Casino & Hospital Projects",
+                Description = "Worked on casino and hospital projects including Scripps Stairs and UBC Gateway with detailed miscellaneous steel coordination.",
+                Technologies = new List<string> { "Tekla Structures", "Misc Steel", "BIM Coordination" },
+                GithubLink = ""
             },
             new Project
             {
-                Title = "Gen AI Invoice Processing & Fraud Detection System",
-                Description = "Prototyped a multilingual invoice automation system using LLM pipelines to extract structured data and detect anomalies, improving financial processing accuracy.",
-                Technologies = new List<string> { "AWS", "LLMs", "RAG", "Vector Databases", "Python" },
-                GithubLink = "Add GitHub project link here"
-            },
-            new Project
-            {
-                Title = "Patient No-Show Prediction Model",
-                Description = "Built a machine learning model to predict patient no-shows, improving scheduling efficiency. Integrated insights into interactive dashboards for data-driven decision making.",
-                Technologies = new List<string> { "Python", "Machine Learning", "Streamlit", "Data Analysis" },
-                GithubLink = "Add GitHub project link here"
+                Title = "NE8th Tower & GSA Scottsdale",
+                Description = "Handled structural modelling, project planning and coordination ensuring timely submissions and optimized resource utilization.",
+                Technologies = new List<string> { "Tekla Structures", "Project Planning", "Steel Modelling" },
+                GithubLink = ""
             }
         };
-
 
         public static List<SkillCategory> Skills = new List<SkillCategory>
         {
             new SkillCategory
             {
-                Title = "Programming Languages",
-                Skills = new List<string> { "Python", "SQL", "JavaScript" }
+                Title = "Software & Tools",
+                Skills = new List<string> { "Tekla Structures", "AutoCAD", "Navisworks", "IFC", "BIM Software" }
             },
             new SkillCategory
             {
-                Title = "Databases & Caching",
-                Skills = new List<string> { "PostgreSQL", "SQLite", "Vector Databases", "Redis" }
+                Title = "Technical Expertise",
+                Skills = new List<string> { "Steel Detailing", "Miscellaneous Steel", "Erection Drawings", "Advanced Connection Macros", "Customized Components" }
             },
             new SkillCategory
             {
-                Title = "Frameworks & Libraries",
-                Skills = new List<string> 
-                { 
-                    "FastAPI", 
-                    "Django", 
-                    "Flask", 
-                    "React.js", 
-                    "Streamlit", 
-                    "LangChain", 
-                    "LangGraph", 
-                    "Semantic Kernel", 
-                    "FAISS", 
-                    "Google ADK", 
-                    "n8n"
-                }
+                Title = "Standards & Safety",
+                Skills = new List<string> { "AISC", "CISC", "AWS", "OSHA Regulations" }
             },
             new SkillCategory
             {
-                Title = "AI / Generative AI",
-                Skills = new List<string> 
-                { 
-                    "Machine Learning", 
-                    "Generative AI", 
-                    "Prompt Engineering", 
-                    "Retrieval-Augmented Generation (RAG)", 
-                    "Agentic AI Frameworks", 
-                    "LLM Orchestration", 
-                    "Time Series Forecasting", 
-                    "Data Analysis"
-                }
-            },
-            new SkillCategory
-            {
-                Title = "Cloud & Event-Driven Systems",
-                Skills = new List<string> 
-                { 
-                    "Google Cloud Platform (GCP)", 
-                    "Google Pub/Sub", 
-                    "Vertex AI", 
-                    "Azure", 
-                    "AWS"
-                }
-            },
-            new SkillCategory
-            {
-                Title = "Tools & Dev Practices",
-                Skills = new List<string> 
-                { 
-                    "Git", 
-                    "GitHub Copilot", 
-                    "Google Charts", 
-                    "REST API Design", 
-                    "RBAC Implementation", 
-                    "System Design Thinking"
-                }
-            },
-            new SkillCategory
-            {
-                Title = "Soft Skills",
-                Skills = new List<string> 
-                { 
-                    "Project Leadership", 
-                    "Problem-Solving", 
-                    "Cross-Functional Collaboration", 
-                    "Technical Learning Agility"
-                }
+                Title = "Leadership & Management",
+                Skills = new List<string> { "Team Leadership", "Project Planning", "Resource Optimization", "Client Coordination", "Quality Assurance" }
             }
         };
-
 
         public static List<ExperienceInfo> Experiences = new List<ExperienceInfo>
         {
             new ExperienceInfo
             {
-                Title = "AI Engineer",
-                Company = "IKS Health",
-                Duration = "Sep 2025 - Present",
-                Description = "Designing FastAPI-based REST APIs and contributing to a containerized Agentic AI framework for healthcare automation. Implementing event-driven workflows using Google Pub/Sub, integrating Vertex AI (LLMs), and developing HITL & MFA processes using n8n, PostgreSQL, and Redis.",
-                Skills = new List<string> 
-                { 
-                    "FastAPI", 
-                    "Agentic AI", 
-                    "Vertex AI", 
-                    "Google Pub/Sub", 
-                    "PostgreSQL", 
-                    "Redis", 
-                    "n8n" 
+                Title = "Team Lead",
+                Company = "Syneteca Engineering Solutions Pvt Ltd",
+                Duration = "Sep 2024 - Present · 1 yr 6 mos",
+                Description = "Leading a team of modelling and detailing engineers at Syneteca, driving project planning, task allocation, quality standards and timely deliverables for global steel detailing projects. Responsible for coaching junior team members, optimizing workflows, coordinating with clients and ensuring compliance with global industry standards.",
+                Skills = new List<string>
+                {
+                    "Team Leadership",
+                    "Project Planning",
+                    "Tekla Structures",
+                    "Quality Control",
+                    "Client Coordination"
                 }
             },
+
             new ExperienceInfo
             {
-                Title = "Analyst (AI/ML Developer)",
-                Company = "Capgemini",
-                Duration = "2024 - Sep 2025",
-                Description = "Monitored and optimized time series forecasting models using hana_ml to improve energy efficiency and reduce CO₂ emissions. Built multi-agent AI prototypes using Semantic Kernel, React, and Flask to automate enterprise workflows.",
-                Skills = new List<string> 
-                { 
-                    "Time Series Forecasting", 
-                    "Semantic Kernel", 
-                    "Azure", 
-                    "Agentic AI", 
-                    "React.js" 
+                Title = "Assistant Team Lead",
+                Company = "Syneteca Engineering Solutions Pvt Ltd",
+                Duration = "Nov 2022 - Sep 2024 · 1 yr 11 mos",
+                Description = "Assisted in leading the modelling team and ensured accuracy in structural and miscellaneous steel detailing. Helped coordinate project timelines, review complex fabrication & erection drawings and supported client communication to achieve deliverables aligned with project requirements.",
+                Skills = new List<string>
+                {
+                    "Tekla Modelling",
+                    "Project Coordination",
+                    "Drawing Review",
+                    "Fabrication Planning",
+                    "Team Support"
                 }
             },
+
             new ExperienceInfo
             {
-                Title = "Associate (Gen AI Developer)",
-                Company = "Capgemini",
-                Duration = "2023 - 2024",
-                Description = "Developed Gen AI invoice automation systems, RAG-based chatbots, and natural language–to–SQL tools to enhance enterprise automation and business intelligence capabilities.",
-                Skills = new List<string> 
-                { 
-                    "RAG", 
-                    "LangChain", 
-                    "AWS", 
-                    "LLMs", 
-                    "React.js" 
+                Title = "Modeling Engineer",
+                Company = "Syneteca Engineering Solutions Pvt Ltd",
+                Duration = "Nov 2021 - Nov 2022 · 1 yr 1 mo",
+                Description = "Performed detailed 3D steel modelling and structural detailing using Tekla Structures. Worked on commercial, industrial and infrastructure projects, ensuring accurate shop and erection drawings as per client specifications and industry standards.",
+                Skills = new List<string>
+                {
+                    "3D Modelling (Tekla)",
+                    "Structural Steel Detailing",
+                    "Shop Drawings",
+                    "Erection Drawings",
+                    "OSHA/AISC Compliance"
                 }
             },
+
             new ExperienceInfo
             {
-                Title = "Associate (Python Developer)",
-                Company = "Capgemini",
-                Duration = "Jul 2022 - 2023",
-                Description = "Built predictive machine learning models and interactive Streamlit dashboards to improve scheduling efficiency and resource utilization across business units.",
-                Skills = new List<string> 
-                { 
-                    "Python", 
-                    "Machine Learning", 
-                    "Streamlit", 
-                    "Data Visualization" 
+                Title = "Trainee Engineer",
+                Company = "Syneteca Engineering Solutions Pvt Ltd",
+                Duration = "Sep 2019 - Nov 2021 · 2 yrs 3 mos",
+                Description = "Started as a trainee focusing on learning structural steel detailing workflows, Tekla modelling and software processes. Supported project requirements and gained expertise in modelling techniques, drawing check processes and coordination with senior engineers.",
+                Skills = new List<string>
+                {
+                    "Tekla Structures",
+                    "Steel Detailing Fundamentals",
+                    "Drawing Checks",
+                    "Project Support",
+                    "Team Collaboration"
                 }
             }
         };
@@ -303,37 +230,19 @@ namespace PortfolioSite.Models
         {
             new EducationInfo
             {
-                Course = "B.Sc. Computer Science",
-                Institution = "VES College of Arts, Science and Commerce, Mumbai",
-                University = "University of Mumbai",
-                YearOfCompletion = "2022",
-                Score = "83.03%"
-            },
-            new EducationInfo
-            {
-                Course = "Higher Secondary Certificate (HSC)",
-                Institution = "National Sarvodaya Junior College",
-                University = "Maharashtra State Board",
+                Course = "B.E. (Civil Engineering)",
+                Institution = "JSPM Tathwade, Pune",
+                University = "Savitribai Phule Pune University (SPPU)",
                 YearOfCompletion = "2019",
-                Score = "62.42%"
-            },
-            new EducationInfo
-            {
-                Course = "Secondary School Certificate (SSC)",
-                Institution = "Shree Sanatan Dharam Vidyalay",
-                University = "Maharashtra State Board",
-                YearOfCompletion = "2017",
-                Score = "80.40%"
+                Score = "7.5 CGPA"
             }
         };
 
-
         public static ContactInfo Contact = new ContactInfo
         {
-            Title = "Let's Build Intelligent Automation Systems Together",
-            Description = "AI Engineer specializing in FastAPI, Agentic AI frameworks, and scalable backend systems for real-world automation.",
-            CallToAction = "Open to AI Engineering, Backend, and Generative AI roles. Let's connect and build impactful systems!"
+            Title = "Let's Build Structural Excellence",
+            Description = "Professional Steel Detailer and Team Leader specializing in Tekla Structures and large-scale steel projects.",
+            CallToAction = "Open to leadership roles, steel detailing projects, and collaboration opportunities."
         };
-
     }
 }
