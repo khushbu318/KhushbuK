@@ -30,29 +30,57 @@ jobs:
       - name: Publish Blazor App
         run: dotnet publish -c Release -o output
 
-      - name: Verify Blazor script injection
-        run: |
-          echo "=== Checking if Blazor scripts were injected ==="
-          grep -i "blazor.webassembly" output/wwwroot/index.html || echo "ERROR: No Blazor script found!"
-          grep -i "autostart" output/wwwroot/index.html || echo "WARNING: Autostart not found (this might be OK)"
-          cat output/wwwroot/index.html
-
-      - name: Fix Blazor script references
+      - name: Fix index.html with proper Blazor loader
         run: |
           cd output/wwwroot
-          # Find the actual blazor file name
-          BLAZOR_JS=$(ls _framework/blazor.webassembly.*.js 2>/dev/null | head -1 | xargs basename)
+          
+          # Create a completely new index.html with the Blazor autostart loader
+          cat > index.html << 'INDEXEOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="utf-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Portfolio</title>
+              <base href="/KhushbuK/" />
+              <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+              <link rel="stylesheet" href="css/app.css" />
+              <link href="css/theme.css" rel="stylesheet" />
+              <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>✨</text></svg>" />
+              <link href="PortfolioSite.styles.css" rel="stylesheet" />
+              <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+          </head>
+          <body>
+              <div id="app">
+                  <div class="loader-container">
+                      <div class="loader-content">
+                          <div class="progress-bar-container">
+                              <div class="progress-bar"></div>
+                          </div>
+                          <div class="loader-text">Loading Portfolio...</div>
+                      </div>
+                  </div>
+              </div>
+              <div id="cursorGlow" class="cursor-glow"></div>
+              <script src="scrollAnimations.js"></script>
+              <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+              <script>
+                Blazor.start();
+              </script>
+          </body>
+          </html>
+          INDEXEOF
+          
+          # Now fix ALL the hashed references
+          BLAZOR_JS=$(find _framework -name "blazor.webassembly.*.js" -type f -printf "%f\n" | head -1)
           
           if [ -n "$BLAZOR_JS" ]; then
             echo "Found Blazor JS: $BLAZOR_JS"
-            # Replace the reference in index.html
-            sed -i "s|_framework/blazor.webassembly.js|_framework/$BLAZOR_JS|g" index.html
-            echo "Updated index.html with correct Blazor reference"
-            grep "blazor.webassembly" index.html
-          else
-            echo "ERROR: Could not find blazor.webassembly.*.js file!"
-            exit 1
+            sed -i "s|blazor.webassembly.js|$BLAZOR_JS|g" index.html
           fi
+          
+          echo "=== Final index.html ==="
+          cat index.html
 
       - name: Debug - List published files
         run: |
