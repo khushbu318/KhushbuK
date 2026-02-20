@@ -778,7 +778,8 @@
 
 .projects__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    /* ☝️ This is key! min(100%, 280px) prevents overflow */
     gap: 32px;
     animation: fadeInContainer 0.8s ease 0.2s forwards;
     width: 100%; /* ADD THIS - prevents overflow */
@@ -799,6 +800,7 @@
     flex-direction: column;
     height: 100%;
     box-sizing: border-box; /* ADD THIS - fixes mobile overflow */
+    max-width: 100%; /* Never exceed container */
 }
 
 .projects__card.show {
@@ -978,6 +980,22 @@
 
     .projects__container {
         padding: 0 16px; /* Tighter on mobile */
+    }
+}
+
+/* Strict mobile breakpoint */
+@media (max-width: 480px) {
+    .projects__container {
+        padding: 0 12px; /* Even tighter padding */
+    }
+    
+    .projects__grid {
+        grid-template-columns: 1fr; /* Force single column */
+        gap: 16px;
+    }
+    
+    .projects__card {
+        padding: 24px; /* Reduce card internal padding */
     }
 }
 
