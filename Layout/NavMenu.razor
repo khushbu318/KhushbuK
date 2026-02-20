@@ -3,90 +3,128 @@
 @inject NavigationManager NavigationManager
 
 <!-- Desktop Sidebar (shown on screens > 640px) -->
-<div class="sidebar-desktop">
-    <div class="brand-container">
-        <NavLink href="" class="hexagon-link" Match="NavLinkMatch.All">
-            <div class="hexagon">
+<div class="nav__sidebar-desktop">
+    <div class="nav__brand-container">
+        <NavLink href="" class="nav__hexagon-link" Match="NavLinkMatch.All">
+            <div class="nav__hexagon">
                 @GetInitials()
             </div>
         </NavLink>
     </div>
     
     <nav class="nav flex-column">
-        <div class="nav-item px-3">
+        <div class="nav__item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="nav-emoji">🏡</span> Home
+                <span class="nav__emoji">🏡</span> Home
             </NavLink>
         </div>
-        <div class="nav-item px-3">
+        <div class="nav__item px-3">
             <NavLink class="nav-link" href="about">
-                <span class="nav-emoji">📋</span> About
+                <span class="nav__emoji">📋</span> About
             </NavLink>
         </div>
-        <div class="nav-item px-3">
+        <div class="nav__item px-3">
             <NavLink class="nav-link" href="experience">
-                <span class="nav-emoji">🚀</span> Experience
+                <span class="nav__emoji">🚀</span> Experience
             </NavLink>
         </div>
-        <div class="nav-item px-3">
+        <div class="nav__item px-3">
             <NavLink class="nav-link" href="skills">
-                <span class="nav-emoji">🎯</span> Skills
+                <span class="nav__emoji">🎯</span> Skills
             </NavLink>
         </div>
-        <div class="nav-item px-3">
+        <div class="nav__item px-3">
             <NavLink class="nav-link" href="projects">
-                <span class="nav-emoji">💼</span> Projects
+                <span class="nav__emoji">💼</span> Projects
             </NavLink>
         </div>
-        <div class="nav-item px-3">
+        <div class="nav__item px-3">
             <NavLink class="nav-link" href="contact">
-                <span class="nav-emoji">🤝</span> Contact
+                <span class="nav__emoji">🤝</span> Contact
             </NavLink>
         </div>
     </nav>
 </div>
 
 <!-- Mobile Top Navbar (shown on screens <= 640px) -->
-<nav class="mobile-navbar">
-    <div class="navbar-container">
-        <NavLink href="" class="navbar-brand" Match="NavLinkMatch.All">
-            <div class="hexagon-sm">
+<nav class="nav__mobile-navbar">
+    <div class="nav__navbar-container">
+        <NavLink href="" class="nav__navbar-brand" Match="NavLinkMatch.All">
+            <div class="nav__hexagon-sm">
                 @GetInitials()
             </div>
         </NavLink>
         
-        <button class="hamburger" @onclick="ToggleMobileMenu" title="Toggle menu">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
+        <button class="nav__hamburger" @onclick="ToggleMobileMenu" title="Toggle menu">
+            <span class="nav__hamburger-line"></span>
+            <span class="nav__hamburger-line"></span>
+            <span class="nav__hamburger-line"></span>
         </button>
     </div>
     
     <!-- Mobile Menu (hidden by default) -->
     @if (showMobileMenu)
     {
-        <div class="mobile-menu">
-            <NavLink href="" class="mobile-menu-link" @onclick="CloseMobileMenu" Match="NavLinkMatch.All">
-                <span class="mobile-emoji">🏡</span> Home
+        <div class="nav__mobile-menu">
+            <NavLink href="" class="nav__mobile-menu-link" @onclick="CloseMobileMenu" Match="NavLinkMatch.All">
+                <span class="nav__mobile-emoji">🏡</span> Home
             </NavLink>
-            <NavLink href="about" class="mobile-menu-link" @onclick="CloseMobileMenu">
-                <span class="mobile-emoji">📋</span> About
+            <NavLink href="about" class="nav__mobile-menu-link" @onclick="CloseMobileMenu">
+                <span class="nav__mobile-emoji">📋</span> About
             </NavLink>
-            <NavLink href="experience" class="mobile-menu-link" @onclick="CloseMobileMenu">
-                <span class="mobile-emoji">🚀</span> Experience
+            <NavLink href="experience" class="nav__mobile-menu-link" @onclick="CloseMobileMenu">
+                <span class="nav__mobile-emoji">🚀</span> Experience
             </NavLink>
-            <NavLink href="skills" class="mobile-menu-link" @onclick="CloseMobileMenu">
-                <span class="mobile-emoji">🎯</span> Skills
+            <NavLink href="skills" class="nav__mobile-menu-link" @onclick="CloseMobileMenu">
+                <span class="nav__mobile-emoji">🎯</span> Skills
             </NavLink>
-            <NavLink href="projects" class="mobile-menu-link" @onclick="CloseMobileMenu">
-                <span class="mobile-emoji">💼</span> Projects
+            <NavLink href="projects" class="nav__mobile-menu-link" @onclick="CloseMobileMenu">
+                <span class="nav__mobile-emoji">💼</span> Projects
             </NavLink>
-            <NavLink href="contact" class="mobile-menu-link" @onclick="CloseMobileMenu">
-                <span class="mobile-emoji">🤝</span> Contact
+            <NavLink href="contact" class="nav__mobile-menu-link" @onclick="CloseMobileMenu">
+                <span class="nav__mobile-emoji">🤝</span> Contact
             </NavLink>
         </div>
     }
 </nav>
+
+@code {
+    private bool showMobileMenu = false;
+
+    private void ToggleMobileMenu()
+    {
+        showMobileMenu = !showMobileMenu;
+    }
+
+    private void CloseMobileMenu()
+    {
+        showMobileMenu = false;
+    }
+
+    private string GetInitials()
+    {
+        var nameParts = UserData.Info.Name.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (nameParts.Length == 1)
+            return nameParts[0].Substring(0, 1).ToUpper();
+
+        return string.Join("", nameParts.Select(n => n[0])).ToUpper();
+    }
+
+    private string IsActive(string href)
+    {
+        var currentPath = NavigationManager.ToBaseRelativePath(NavigationManager.Uri).TrimEnd('/');
+        var hrefPath = href.TrimEnd('/');
+
+        if (hrefPath == "" || hrefPath == "/")
+            hrefPath = "";
+
+        if (currentPath == hrefPath)
+            return "active";
+
+        return "";
+    }
+}
 
 @code {
     private bool showMobileMenu = false;
