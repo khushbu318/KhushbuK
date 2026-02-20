@@ -95,7 +95,7 @@ namespace PortfolioSite.Models
                 "Tekla Structures Expert"
             },
             Bio = "Responsible Tekla Detailer with 5 years of experience in the steel detailing industry. Passionate about delivering outstanding quality, precise structural drawings, and leading teams to achieve business objectives.",
-            ProfileImage = "images/profile.jpg",
+            ProfileImage = "images/profile_a.png",
             ResumeLink = "files/Amit_G_Resume.pdf",
             YearsOfExperience = 6,
             ProjectsCompleted = 4,
