@@ -30,74 +30,25 @@ jobs:
       - name: Publish Blazor App
         run: dotnet publish -c Release -o output
 
-      - name: Fix index.html with proper Blazor loader
+      - name: Verify blazor.boot.json exists
         run: |
-          cd output/wwwroot
-          
-          # Create a completely new index.html with the Blazor autostart loader
-          cat > index.html << 'INDEXEOF'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="utf-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-              <title>Portfolio</title>
-              <base href="/KhushbuK/" />
-              <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-              <link rel="stylesheet" href="css/app.css" />
-              <link href="css/theme.css" rel="stylesheet" />
-              <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>✨</text></svg>" />
-              <link href="PortfolioSite.styles.css" rel="stylesheet" />
-              <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-          </head>
-          <body>
-              <div id="app">
-                  <div class="loader-container">
-                      <div class="loader-content">
-                          <div class="progress-bar-container">
-                              <div class="progress-bar"></div>
-                          </div>
-                          <div class="loader-text">Loading Portfolio...</div>
-                      </div>
-                  </div>
-              </div>
-              <div id="cursorGlow" class="cursor-glow"></div>
-              <script src="scrollAnimations.js"></script>
-              <script src="_framework/blazor.webassembly.js" autostart="false"></script>
-              <script>
-                Blazor.start();
-              </script>
-          </body>
-          </html>
-          INDEXEOF
-          
-          # Now fix ALL the hashed references
-          BLAZOR_JS=$(find _framework -name "blazor.webassembly.*.js" -type f -printf "%f\n" | head -1)
-          
-          if [ -n "$BLAZOR_JS" ]; then
-            echo "Found Blazor JS: $BLAZOR_JS"
-            sed -i "s|blazor.webassembly.js|$BLAZOR_JS|g" index.html
+          echo "=== Checking for blazor.boot.json ==="
+          if [ -f "output/wwwroot/_framework/blazor.boot.json" ]; then
+            echo "✓ blazor.boot.json found"
+            echo "Contents preview:"
+            cat output/wwwroot/_framework/blazor.boot.json | head -20
+          else
+            echo "✗ ERROR: blazor.boot.json NOT found!"
+            exit 1
           fi
-          
-          echo "=== Final index.html ==="
-          cat index.html
 
       - name: Debug - List published files
         run: |
           echo "=== Contents of output/wwwroot ==="
           ls -la output/wwwroot/
           echo ""
-          echo "=== Contents of output/wwwroot/_framework ==="
-          ls -la output/wwwroot/_framework/ || echo "_framework folder not found!"
-          echo ""
-          echo "=== First 20 files in output ==="
-          find output/wwwroot -type f | head -20
-          echo ""
-          echo "=== Checking for blazor.webassembly.js ==="
-          find output/wwwroot -name "blazor.webassembly.js" || echo "blazor.webassembly.js NOT found!"
-          echo ""
-          echo "=== Base href in index.html ==="
-          grep "base href" output/wwwroot/index.html || echo "base href not found!"
+          echo "=== Contents of output/wwwroot/_framework (first 20) ==="
+          ls -la output/wwwroot/_framework/ | head -20
 
       - name: Add .nojekyll
         run: touch output/wwwroot/.nojekyll
@@ -124,7 +75,7 @@ jobs:
           EOF
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: upload-pages-artifact@v3
         with:
           path: 'output/wwwroot'
 
