@@ -1705,3 +1705,29 @@
     border-left: 3px solid var(--accent-primary) !important;
     padding-left: calc(1.5rem - 3px) !important;
 }
+
+/* Nav Link Styles */
+.nav__link {
+    color: #d7d7d7;
+    border-radius: 4px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.nav__link.active {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    color: var(--accent-glow) !important;
+    border-left: 3px solid var(--accent-primary) !important;
+    font-weight: 700 !important;
+    transform: translateX(4px);
+}
+
+.nav__link:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
