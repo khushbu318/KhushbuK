@@ -21,20 +21,22 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
+      # IMPORTANT: DO NOT override output folder
       - name: Publish Blazor App
-        run: dotnet publish -c Release -o release
+        run: dotnet publish -c Release
 
+      # Add .nojekyll to prevent GitHub from removing _framework
       - name: Create .nojekyll
-        run: touch release/wwwroot/.nojekyll
+        run: touch bin/Release/net10.0/publish/wwwroot/.nojekyll
 
-      # This enables SPA routing on GitHub Pages
+      # SPA routing support
       - name: Copy index.html to 404.html
-        run: cp release/wwwroot/index.html release/wwwroot/404.html
+        run: cp bin/Release/net10.0/publish/wwwroot/index.html bin/Release/net10.0/publish/wwwroot/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: release/wwwroot
+          path: bin/Release/net10.0/publish/wwwroot
 
   deploy:
     needs: build
