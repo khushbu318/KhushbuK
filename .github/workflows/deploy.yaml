@@ -30,6 +30,23 @@ jobs:
       - name: Publish Blazor App
         run: dotnet publish -c Release -o output
 
+      - name: Fix Blazor script references
+        run: |
+          cd output/wwwroot
+          # Find the actual blazor file name
+          BLAZOR_JS=$(ls _framework/blazor.webassembly.*.js 2>/dev/null | head -1 | xargs basename)
+          
+          if [ -n "$BLAZOR_JS" ]; then
+            echo "Found Blazor JS: $BLAZOR_JS"
+            # Replace the reference in index.html
+            sed -i "s|_framework/blazor.webassembly.js|_framework/$BLAZOR_JS|g" index.html
+            echo "Updated index.html with correct Blazor reference"
+            grep "blazor.webassembly" index.html
+          else
+            echo "ERROR: Could not find blazor.webassembly.*.js file!"
+            exit 1
+          fi
+
       - name: Debug - List published files
         run: |
           echo "=== Contents of output/wwwroot ==="
