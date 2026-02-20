@@ -30,25 +30,37 @@ jobs:
       - name: Publish Blazor App
         run: dotnet publish -c Release -o output
 
-      - name: Verify blazor.boot.json exists
+      - name: List framework files to find loader
         run: |
-          echo "=== Checking for blazor.boot.json ==="
-          if [ -f "output/wwwroot/_framework/blazor.boot.json" ]; then
-            echo "✓ blazor.boot.json found"
-            echo "Contents preview:"
-            cat output/wwwroot/_framework/blazor.boot.json | head -20
+          echo "=== Framework files ==="
+          ls -la output/wwwroot/_framework/ | grep -E '\.(js|json)$' | head -30
+
+      - name: Fix Blazor script references in index.html
+        run: |
+          cd output/wwwroot
+          
+          # Find the hashed blazor.webassembly file
+          BLAZOR_JS=$(ls _framework/blazor.webassembly.*.js 2>/dev/null | head -1)
+          
+          if [ -n "$BLAZOR_JS" ]; then
+            BLAZOR_BASENAME=$(basename "$BLAZOR_JS")
+            echo "Found Blazor JS: $BLAZOR_BASENAME"
+            
+            # Update index.html to use the hashed filename
+            if grep -q "blazor.webassembly.js" index.html; then
+              sed -i "s|blazor.webassembly.js|$BLAZOR_BASENAME|g" index.html
+              echo "✓ Updated index.html"
+            else
+              echo "⚠ index.html doesn't contain blazor.webassembly.js reference"
+            fi
+            
+            echo "=== Updated index.html content ==="
+            cat index.html
           else
-            echo "✗ ERROR: blazor.boot.json NOT found!"
+            echo "✗ ERROR: Could not find blazor.webassembly.*.js"
+            ls -la _framework/ | grep blazor
             exit 1
           fi
-
-      - name: Debug - List published files
-        run: |
-          echo "=== Contents of output/wwwroot ==="
-          ls -la output/wwwroot/
-          echo ""
-          echo "=== Contents of output/wwwroot/_framework (first 20) ==="
-          ls -la output/wwwroot/_framework/ | head -20
 
       - name: Add .nojekyll
         run: touch output/wwwroot/.nojekyll

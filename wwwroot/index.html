@@ -27,20 +27,6 @@
     <div id="cursorGlow" class="cursor-glow"></div>
     
     <script src="./scrollAnimations.js"></script>
-    <script type="module">
-        // Dynamically load Blazor with correct hash
-        try {
-            const bootJson = await fetch('./_framework/blazor.boot.json');
-            const boot = await bootJson.json();
-            const blazorScript = boot.resources.runtime['blazor.webassembly.js'];
-            const script = document.createElement('script');
-            script.src = `./_framework/${blazorScript}`;
-            script.setAttribute('autostart', 'true');
-            document.body.appendChild(script);
-        } catch (error) {
-            console.error('Failed to load Blazor:', error);
-            document.getElementById('app').innerHTML = '<p style="color: red;">Failed to load application. Please refresh the page.</p>';
-        }
-    </script>
+    <script src="./_framework/blazor.webassembly.js"></script>
 </body>
 </html>
