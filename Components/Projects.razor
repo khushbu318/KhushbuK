@@ -1,28 +1,28 @@
 @using PortfolioSite.Models
 @inject IJSRuntime JS
 
-<section id="projects" class="projects-section">
-    <div class="projects-container">
-        <h2 class="section-title">Projects</h2>
+<section id="projects" class="projects__section">
+    <div class="projects__container">
+        <h2 class="projects__title">Projects</h2>
 
-        <div class="projects-grid">
+        <div class="projects__grid">
             @foreach (var project in UserData.Projects)
             {
-                <div class="project-card">
+                <div class="projects__card">
                     <h3>@project.Title</h3>
 
                     <p>@project.Description</p>
 
-                    <div class="tech-stack">
+                    <div class="projects__tech-stack">
                         @foreach (var tech in project.Technologies)
                         {
-                            <span class="tech-badge">@tech</span>
+                            <span class="projects__tech-badge">@tech</span>
                         }
                     </div>
 
                     <!-- <a href="@project.GithubLink"
                        target="_blank"
-                       class="project-btn">
+                       class="projects__btn">
                         View Code →
                     </a> -->
                 </div>
@@ -30,6 +30,16 @@
         </div>
     </div>
 </section>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("observeProjects");
+        }
+    }
+}
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)

@@ -2,31 +2,31 @@
 @inject IJSRuntime JS
 
 
-<section id="experience" class="experience-section">
-    <div class="experience-container">
-        <h2 class="section-title">Experience</h2>
+<section id="experience" class="experience__section">
+    <div class="experience__container">
+        <h2 class="experience__title">Experience</h2>
 
-        <div class="timeline">
+        <div class="experience__timeline">
 
             @foreach (var exp in UserData.Experiences)
             {
-                <div class="timeline-item">
+                <div class="experience__item">
 
                     <!-- DOT -->
-                    <div class="timeline-dot"></div>
+                    <div class="experience__dot"></div>
 
                     <!-- CARD -->
-                    <div class="timeline-content">
+                    <div class="experience__content">
                         <h3>@exp.Title</h3>
                         <h4>@exp.Company</h4>
-                        <span class="duration">@exp.Duration</span>
+                        <span class="experience__duration">@exp.Duration</span>
 
                         <p>@exp.Description</p>
 
-                        <div class="skill-tags">
+                        <div class="experience__skill-tags">
                             @foreach (var skill in exp.Skills)
                             {
-                                <span class="skill-badge">@skill</span>
+                                <span class="experience__skill-badge">@skill</span>
                             }
                         </div>
                     </div>
@@ -37,6 +37,16 @@
         </div>
     </div>
 </section>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("observeTimeline");
+        }
+    }
+}
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)

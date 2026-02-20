@@ -1,31 +1,31 @@
 @using PortfolioSite.Models
 @inject IJSRuntime JS
 
-<section id="contact" class="contact-section">
+<section id="contact" class="contact__section">
 
-    <div class="contact-container">
+    <div class="contact__container">
 
-        <div class="contact-content">
-            <h2 class="section-title">@UserData.Contact.Title</h2>
+        <div class="contact__content">
+            <h2 class="contact__title">@UserData.Contact.Title</h2>
 
-            <p class="contact-description">
+            <p class="contact__description">
                 @UserData.Contact.Description
             </p>
 
-            <p class="contact-cta">
+            <p class="contact__cta">
                 @UserData.Contact.CallToAction
             </p>
         </div>
 
-        <div class="contact-divider"></div>
+        <div class="contact__divider"></div>
 
-        <div class="contact-social">
-            <div class="social-links">
+        <div class="contact__social">
+            <div class="contact__social-links">
                 @foreach (var link in UserData.SocialLinks)
                 {
                     <a href="@link.Url"
                        target="_blank"
-                       class="social-icon"
+                       class="contact__social-icon"
                        title="@link.Platform">
                         <i class="@link.IconClass"></i>
                     </a>
@@ -36,6 +36,16 @@
     </div>
 
 </section>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("observeContact");
+        }
+    }
+}
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)

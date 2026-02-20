@@ -1,34 +1,34 @@
 @using PortfolioSite.Models
 
-<section class="hero-section">
-    <div class="hero-container">
+<section class="hero__section">
+    <div class="hero__container">
 
-        <div class="hero-header">
+        <div class="hero__header">
             <h1>@UserData.Info.Name</h1>
         </div>
 
-        <div class="hero-content">
-            <h3 class="roles">
+        <div class="hero__content">
+            <h3 class="hero__roles">
                 @foreach (var role in UserData.Info.Roles)
                 {
-                    <span class="role-badge">@role</span>
+                    <span class="hero__role-badge">@role</span>
                 }
             </h3>
 
-            <p class="bio">
+            <p class="hero__bio">
                 @UserData.Info.Bio
             </p>
 
-            <a href="@UserData.Info.ResumeLink" download class="resume-btn">
+            <a href="@UserData.Info.ResumeLink" download class="hero__resume-btn">
                 Download Resume
             </a>
         </div>
 
-        <div class="hero-image">
+        <div class="hero__image">
             <img src="@UserData.Info.ProfileImage" alt="Profile Image" />
         </div>
 
-        <div class="social-links">
+        <div class="hero__social-links">
             @foreach (var social in UserData.SocialLinks)
             {
                 <a href="@social.Url" target="_blank" title="@social.Platform">
