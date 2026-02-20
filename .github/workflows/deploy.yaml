@@ -102,8 +102,26 @@ jobs:
       - name: Add .nojekyll
         run: touch output/wwwroot/.nojekyll
 
-      - name: Copy index.html to 404.html
-        run: cp output/wwwroot/index.html output/wwwroot/404.html
+      - name: Create 404.html for SPA routing
+        run: |
+          cat > output/wwwroot/404.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="utf-8" />
+              <title>Redirecting...</title>
+              <script>
+                // GitHub Pages SPA redirect
+                const path = window.location.pathname.replace('/KhushbuK/', '');
+                const search = window.location.search;
+                window.location.replace('/KhushbuK/#' + path + search);
+              </script>
+          </head>
+          <body>
+              Redirecting...
+          </body>
+          </html>
+          EOF
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
