@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     <base href="/KhushbuK/" />
+
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link href="css/theme.css" rel="stylesheet" />
+
+    <!-- Dynamic Emoji Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>✨</text></svg>" />
     <link href="PortfolioSite.styles.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
+        <!-- Progress Bar Loader -->
         <div class="loader-container">
             <div class="loader-content">
                 <div class="progress-bar-container">
@@ -23,12 +29,14 @@
             </div>
         </div>
     </div>
+
+    <!-- Cursor Glow -->
     <div id="cursorGlow" class="cursor-glow"></div>
+
+    <!-- DO NOT add <script src="_framework/blazor.webassembly.js"></script> here -->
+    <!-- Blazor will inject it automatically during build -->
     
     <script src="scrollAnimations.js"></script>
-    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
-    <script>
-      Blazor.start();
-    </script>
 </body>
+
 </html>

@@ -30,6 +30,13 @@ jobs:
       - name: Publish Blazor App
         run: dotnet publish -c Release -o output
 
+      - name: Verify Blazor script injection
+        run: |
+          echo "=== Checking if Blazor scripts were injected ==="
+          grep -i "blazor.webassembly" output/wwwroot/index.html || echo "ERROR: No Blazor script found!"
+          grep -i "autostart" output/wwwroot/index.html || echo "WARNING: Autostart not found (this might be OK)"
+          cat output/wwwroot/index.html
+
       - name: Fix Blazor script references
         run: |
           cd output/wwwroot
