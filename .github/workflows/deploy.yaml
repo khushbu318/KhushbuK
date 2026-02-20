@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,24 +31,31 @@ jobs:
         run: dotnet restore
 
       - name: Publish Blazor App
-        run: dotnet publish -c Release -o release --nologo
+        run: dotnet publish -c Release -o output
 
-      - name: Change base tag in index.html
-        run: sed -i 's/<base href="\/" \/>/<base href="\/KhushbuK\/" \/>/g' release/wwwroot/index.html
+      - name: List published files (debug)
+        run: |
+          echo "Contents of output/wwwroot:"
+          ls -la output/wwwroot/
+          echo "Contents of output/wwwroot/_framework:"
+          ls -la output/wwwroot/_framework/ || echo "_framework folder not found!"
 
-      - name: Create .nojekyll file
-        run: touch release/wwwroot/.nojekyll
+      - name: Verify base href
+        run: cat output/wwwroot/index.html | grep "base href"
+
+      - name: Create .nojekyll
+        run: touch output/wwwroot/.nojekyll
 
       - name: Copy index.html to 404.html
-        run: cp release/wwwroot/index.html release/wwwroot/404.html
+        run: cp output/wwwroot/index.html output/wwwroot/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: release/wwwroot
+          path: output/wwwroot
 
   deploy:
-    needs: build
+    needs: build-and-deploy
     runs-on: ubuntu-latest
     environment:
       name: github-pages
