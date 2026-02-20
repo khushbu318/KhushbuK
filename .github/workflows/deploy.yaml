@@ -41,6 +41,47 @@ jobs:
           echo "=== Index.html content ==="
           cat output/wwwroot/index.html
 
+      - name: COMPREHENSIVE CSS DIAGNOSTIC
+        run: |
+          echo "=== ALL CSS FILES IN SOURCE (wwwroot/css/) ==="
+          ls -lah wwwroot/css/ || echo "Source css folder not found"
+          echo ""
+          echo "=== ALL CSS FILES IN OUTPUT (output/wwwroot/css/) ==="
+          ls -lah output/wwwroot/css/ || echo "Output css folder not found"
+          echo ""
+          echo "=== CONTENT OF app.css (first 30 lines) ==="
+          head -30 output/wwwroot/css/app.css || echo "app.css not found"
+          echo ""
+          echo "=== CONTENT OF theme.css (first 30 lines) ==="
+          head -30 output/wwwroot/css/theme.css || echo "theme.css not found"
+          echo ""
+          echo "=== DEPLOYED INDEX.HTML ==="
+          cat output/wwwroot/index.html
+          echo ""
+          echo "=== ALL FILES BEING DEPLOYED ==="
+          find output/wwwroot -type f -name "*.css" -o -name "*.html" | sort
+          echo ""
+          echo "=== FILE SIZES ==="
+          du -h output/wwwroot/css/* || echo "No css files"
+
+      - name: Verify Scoped CSS Bundle
+        run: |
+          echo "=== Checking scoped CSS bundle ==="
+          if [ -f "output/wwwroot/PortfolioSite.styles.css" ]; then
+            echo "✓ Bundle exists"
+            SIZE=$(wc -c < output/wwwroot/PortfolioSite.styles.css)
+            echo "Size: $SIZE bytes"
+            if [ $SIZE -lt 1000 ]; then
+              echo "⚠ WARNING: Bundle is very small, might be empty"
+            fi
+            echo ""
+            echo "First 50 lines:"
+            head -50 output/wwwroot/PortfolioSite.styles.css
+          else
+            echo "✗ ERROR: Bundle not found!"
+            exit 1
+          fi
+
       - name: Add .nojekyll
         run: touch output/wwwroot/.nojekyll
 
