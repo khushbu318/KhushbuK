@@ -65,6 +65,59 @@ jobs:
           </html>
           EOF
 
+      - name: Create diagnostic test page
+        run: |
+          cat > output/wwwroot/test.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>Diagnostic Test</title>
+              <base href="/KhushbuK/" />
+          </head>
+          <body>
+              <h1>Path Test</h1>
+              <p>If you can see this, HTML is loading.</p>
+              
+              <h2>CSS Tests:</h2>
+              <link rel="stylesheet" href="./css/app.css" />
+              <p class="test-class">Test CSS with ./css/app.css</p>
+              
+              <link rel="stylesheet" href="css/app.css" />
+              <p class="test-class">Test CSS with css/app.css</p>
+              
+              <h2>Path Info:</h2>
+              <script>
+                document.write('<p>Current path: ' + window.location.pathname + '</p>');
+                document.write('<p>Base URL: ' + document.baseURI + '</p>');
+                document.write('<p>Full URL: ' + window.location.href + '</p>');
+              </script>
+              
+              <h2>Resource Tests:</h2>
+              <div id="results"></div>
+              <script>
+                const results = document.getElementById('results');
+                
+                async function testPath(path) {
+                  try {
+                    const response = await fetch(path);
+                    const status = response.ok ? '✓ OK' : '✗ ' + response.status;
+                    results.innerHTML += `<p>${status}: ${path}</p>`;
+                  } catch (e) {
+                    results.innerHTML += `<p>✗ ERROR: ${path} - ${e.message}</p>`;
+                  }
+                }
+                
+                testPath('./css/app.css');
+                testPath('css/app.css');
+                testPath('/KhushbuK/css/app.css');
+                testPath('./_framework/blazor.webassembly.js');
+                testPath('_framework/blazor.webassembly.js');
+                testPath('/KhushbuK/_framework/blazor.webassembly.js');
+              </script>
+          </body>
+          </html>
+          EOF
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
