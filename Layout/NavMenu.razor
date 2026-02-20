@@ -5,41 +5,41 @@
 <!-- Desktop Sidebar (shown on screens > 640px) -->
 <div class="sidebar-desktop">
     <div class="brand-container">
-        <a href="/" class="hexagon-link">
+        <NavLink href="" class="hexagon-link" Match="NavLinkMatch.All">
             <div class="hexagon">
                 @GetInitials()
             </div>
-        </a>
+        </NavLink>
     </div>
     
     <nav class="nav flex-column">
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="nav-emoji">🏡</span> Home
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/about">
+            <NavLink class="nav-link" href="about">
                 <span class="nav-emoji">📋</span> About
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/experience">
+            <NavLink class="nav-link" href="experience">
                 <span class="nav-emoji">🚀</span> Experience
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/skills">
+            <NavLink class="nav-link" href="skills">
                 <span class="nav-emoji">🎯</span> Skills
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/projects">
+            <NavLink class="nav-link" href="projects">
                 <span class="nav-emoji">💼</span> Projects
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/contact">
+            <NavLink class="nav-link" href="contact">
                 <span class="nav-emoji">🤝</span> Contact
             </NavLink>
         </div>
@@ -49,11 +49,11 @@
 <!-- Mobile Top Navbar (shown on screens <= 640px) -->
 <nav class="mobile-navbar">
     <div class="navbar-container">
-        <a href="/" class="navbar-brand">
+        <NavLink href="" class="navbar-brand" Match="NavLinkMatch.All">
             <div class="hexagon-sm">
                 @GetInitials()
             </div>
-        </a>
+        </NavLink>
         
         <button class="hamburger" @onclick="ToggleMobileMenu" title="Toggle menu">
             <span class="hamburger-line"></span>
@@ -66,24 +66,24 @@
     @if (showMobileMenu)
     {
         <div class="mobile-menu">
-            <a href="/" class="mobile-menu-link @IsActive("/")" @onclick="CloseMobileMenu">
+            <NavLink href="" class="mobile-menu-link" @onclick="CloseMobileMenu" Match="NavLinkMatch.All">
                 <span class="mobile-emoji">🏡</span> Home
-            </a>
-            <a href="/about" class="mobile-menu-link @IsActive("/about")" @onclick="CloseMobileMenu">
+            </NavLink>
+            <NavLink href="about" class="mobile-menu-link" @onclick="CloseMobileMenu">
                 <span class="mobile-emoji">📋</span> About
-            </a>
-            <a href="/experience" class="mobile-menu-link @IsActive("/experience")" @onclick="CloseMobileMenu">
+            </NavLink>
+            <NavLink href="experience" class="mobile-menu-link" @onclick="CloseMobileMenu">
                 <span class="mobile-emoji">🚀</span> Experience
-            </a>
-            <a href="/skills" class="mobile-menu-link @IsActive("/skills")" @onclick="CloseMobileMenu">
+            </NavLink>
+            <NavLink href="skills" class="mobile-menu-link" @onclick="CloseMobileMenu">
                 <span class="mobile-emoji">🎯</span> Skills
-            </a>
-            <a href="/projects" class="mobile-menu-link @IsActive("/projects")" @onclick="CloseMobileMenu">
+            </NavLink>
+            <NavLink href="projects" class="mobile-menu-link" @onclick="CloseMobileMenu">
                 <span class="mobile-emoji">💼</span> Projects
-            </a>
-            <a href="/contact" class="mobile-menu-link @IsActive("/contact")" @onclick="CloseMobileMenu">
+            </NavLink>
+            <NavLink href="contact" class="mobile-menu-link" @onclick="CloseMobileMenu">
                 <span class="mobile-emoji">🤝</span> Contact
-            </a>
+            </NavLink>
         </div>
     }
 </nav>
