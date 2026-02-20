@@ -1,6 +1,7 @@
 window.observeTimeline = () => {
 
-    const items = document.querySelectorAll('.timeline-item');
+    // Use both selectors for compatibility
+    const items = document.querySelectorAll('.experience__item, .timeline-item');
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -19,7 +20,8 @@ window.observeTimeline = () => {
 
 window.observeSkills = () => {
 
-    const cards = document.querySelectorAll('.skill-card');
+    // Use both selectors for compatibility
+    const cards = document.querySelectorAll('.skills__card, .skill-card');
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -38,7 +40,8 @@ window.observeSkills = () => {
 
 window.observeProjects = () => {
 
-    const cards = document.querySelectorAll('.project-card');
+    // Use both selectors for compatibility
+    const cards = document.querySelectorAll('.projects__card, .project-card');
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -57,7 +60,8 @@ window.observeProjects = () => {
 
 window.observeContact = () => {
 
-    const items = document.querySelectorAll('.contact-card');
+    // Use both selectors for compatibility
+    const items = document.querySelectorAll('.contact-card, .contact__container');
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {

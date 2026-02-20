@@ -1595,3 +1595,113 @@
         width: 0;
     }
 }
+
+/* ===== ANIMATION TRIGGERS FOR OBSERVE FUNCTIONS ===== */
+
+/* Experience section - Ensure visibility */
+.experience__section {
+    display: block !important;
+    visibility: visible !important;
+    width: 100%;
+}
+
+.experience__container {
+    display: block !important;
+}
+
+.experience__grid {
+    display: grid !important;
+}
+
+/* Timeline items (Experience cards) - Ensure they display when .show is added */
+.experience__item {
+    display: block !important;
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.experience__item.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Projects section - Ensure visibility */
+.projects__section {
+    display: block !important;
+    visibility: visible !important;
+    width: 100%;
+}
+
+.projects__grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+}
+
+/* Project cards - Ensure they display when .show is added */
+.projects__card {
+    display: flex !important;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.projects__card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Skills section - Ensure visibility */
+.skills__section {
+    display: block !important;
+    visibility: visible !important;
+    width: 100%;
+}
+
+.skills__grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+}
+
+/* Skills cards - Ensure they display when .show is added */
+.skills__card {
+    display: block !important;
+    opacity: 0;
+}
+
+.skills__card.show {
+    opacity: 1;
+}
+
+/* ===== SIDEBAR NAVIGATION FIXES ===== */
+
+/* Fix sidebar hover effect for nav items */
+.nav__item ::deep a {
+    position: relative;
+    overflow: visible;
+}
+
+.nav__item ::deep a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-primary);
+    transition: width var(--transition-smooth);
+}
+
+.nav__item ::deep a:hover::after {
+    width: 100%;
+}
+
+.nav__item ::deep a:hover {
+    background-color: rgba(59, 130, 246, 0.15);
+}
+
+/* Ensure active nav items have proper styling */
+.nav__item ::deep a.active {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    color: var(--accent-glow) !important;
+    border-left: 3px solid var(--accent-primary) !important;
+    padding-left: calc(1.5rem - 3px) !important;
+}
