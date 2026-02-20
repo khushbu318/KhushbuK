@@ -41,58 +41,8 @@
         <a href="." class="reload">Reload</a>
         <span class="dismiss">🗙</span>
     </div> -->
-    <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
     <script src="scrollAnimations.js"></script>
-
-    <script>
-        // Handle 404 redirect restoration for SPA routing on GitHub Pages
-        if (window.location.search) {
-            var path = window.location.search.substring(1).split('&')[0];
-            if (path && !path.startsWith('utm') && path !== '') {
-                window.history.replaceState(null, null, '/KhushbuK/' + path);
-            }
-        }
-    </script>
-
-    <script>
-        // Animate progress bar during loading
-        let progress = 0;
-        const progressBar = document.querySelector('.progress-bar');
-        const progressInterval = setInterval(() => {
-            progress += Math.random() * 30;
-            progress = Math.min(progress, 90);
-            if (progressBar) {
-                progressBar.style.width = progress + '%';
-            }
-        }, 200);
-
-        // Complete progress when Blazor is ready
-        window.addEventListener('load', () => {
-            clearInterval(progressInterval);
-            if (progressBar) {
-                progressBar.style.width = '100%';
-            }
-        });
-
-        
-        document.addEventListener("DOMContentLoaded", function () {
-
-            const glow = document.getElementById("cursorGlow");
-            const content = document.querySelector(".main-area");
-
-            if (!glow || !content) return;
-
-            content.addEventListener("mousemove", (e) => {
-                glow.style.left = e.clientX + "px";
-                glow.style.top = e.clientY + "px";
-            });
-
-            content.addEventListener("mouseleave", () => {
-                glow.style.left = "-500px";
-            });
-
-        });
-    </script>
 
 
 
