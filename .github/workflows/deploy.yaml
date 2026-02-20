@@ -30,37 +30,16 @@ jobs:
       - name: Publish Blazor App
         run: dotnet publish -c Release -o output
 
-      - name: List framework files to find loader
+      - name: Debug - Verify build output
         run: |
+          echo "=== Contents of output/wwwroot ==="
+          ls -la output/wwwroot/
+          echo ""
           echo "=== Framework files ==="
-          ls -la output/wwwroot/_framework/ | grep -E '\.(js|json)$' | head -30
-
-      - name: Fix Blazor script references in index.html
-        run: |
-          cd output/wwwroot
-          
-          # Find the hashed blazor.webassembly file
-          BLAZOR_JS=$(ls _framework/blazor.webassembly.*.js 2>/dev/null | head -1)
-          
-          if [ -n "$BLAZOR_JS" ]; then
-            BLAZOR_BASENAME=$(basename "$BLAZOR_JS")
-            echo "Found Blazor JS: $BLAZOR_BASENAME"
-            
-            # Update index.html to use the hashed filename
-            if grep -q "blazor.webassembly.js" index.html; then
-              sed -i "s|blazor.webassembly.js|$BLAZOR_BASENAME|g" index.html
-              echo "✓ Updated index.html"
-            else
-              echo "⚠ index.html doesn't contain blazor.webassembly.js reference"
-            fi
-            
-            echo "=== Updated index.html content ==="
-            cat index.html
-          else
-            echo "✗ ERROR: Could not find blazor.webassembly.*.js"
-            ls -la _framework/ | grep blazor
-            exit 1
-          fi
+          ls -la output/wwwroot/_framework/ | grep -E 'blazor|dotnet' | head -20
+          echo ""
+          echo "=== Index.html content ==="
+          cat output/wwwroot/index.html
 
       - name: Add .nojekyll
         run: touch output/wwwroot/.nojekyll
