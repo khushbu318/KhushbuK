@@ -4,6 +4,7 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 40px;
+    box-sizing: border-box; /* ← add this */
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
     gap: 60px;
@@ -130,6 +131,8 @@
     .contact__container {
         grid-template-columns: 1fr;
         gap: 40px;
+        padding: 20px 16px; /* ← add this */
+        box-sizing: border-box; /* ← add this */
     }
 
     .contact__divider {
