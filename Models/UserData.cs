@@ -80,7 +80,7 @@ namespace PortfolioSite.Models
             new SocialLink
             {
                 Platform = "Email",
-                Url = "mailto:yourmail@gmail.com",
+                Url = "mailto:khushbu.kushvaha.work@gmail.com",
                 IconClass = "fas fa-envelope"
             },
             new SocialLink
