@@ -1,5 +1,11 @@
 /* ===== CONTACT COMPONENT ===== */
 
+.contact__section {
+    overflow-x: hidden;  /* ← add this */
+    width: 100%;
+}
+
+
 .contact__container {
     max-width: 1000px;
     margin: 0 auto;
@@ -11,6 +17,7 @@
     align-items: center;
     justify-items: center;
     width: 100%;
+    overflow: hidden;
 }
 
 .contact__content {
