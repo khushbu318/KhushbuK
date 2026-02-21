@@ -142,6 +142,16 @@
         box-sizing: border-box; /* ← add this */
     }
 
+    .contact__content {
+        animation: none;  /* ← kill horizontal slide animation */
+        width: 100%;
+    }
+
+    .contact__social {
+        animation: none;  /* ← kill horizontal slide animation */
+        width: 100%;
+    }
+
     .contact__divider {
         display: none;
     }
@@ -152,7 +162,9 @@
 
     .contact__social-links {
         flex-direction: row;
+        flex-wrap: wrap;  /* ← prevents icons overflowing if too many */
         gap: 20px;
+        justify-content: center
     }
 
     .contact__social-icon {
